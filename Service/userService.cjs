@@ -1,6 +1,6 @@
 const db =require("../models/index.cjs")
 
-const {User}=db
+const {User,Chat}=db
 
 const createUser=async(data)=>{
     const user =await User.create(data);
@@ -12,12 +12,25 @@ const login=async(email,password)=>{
     if(!user){
         throw new Error("user does not exist by this id");
     }
-    if(password!=user.password){
-        throw new Error("password is wrong");
-    }
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+    throw new Error("Invalid Password");
+  }
     return user;
+}
+const getById=async(id)=>{
+   const user =await User.findByPk(id,{
+            include:[
+                {model:Chat,as:"chats"}
+            ]
+        });
+   if(!user){
+    throw new Error ("no user by this id");
+   }
+   return user
 }
 module.exports={
     createUser,
-    login
+    login,
+    getById
 }

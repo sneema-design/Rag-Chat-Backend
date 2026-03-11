@@ -19,10 +19,10 @@ app.use("/user",userRoutes)
 app.use("/ask",chatRoutes);  
 app.listen(4000,()=>{  
    console.log("server is running on Port 4000");
-})
+}) 
 // async function main() {
 //   console.log("Loading doc"); 
-//   const doc = await loadDocs();
+//   const doc = await loadDocs(); 
 //   console.log("Docs loaded:", doc.length);
 //   console.log("creating chunks");
 //   const chunks = await docsplitters(doc);
@@ -30,10 +30,11 @@ app.listen(4000,()=>{
 //   console.log("storing in pinecone db");
 //   await storeVectors(chunks);
 // }
-// async function test() {
+// async function test() { 
 //   const query = "What is smart city";
 //   const contexts = await retrival(query);
 //   const answer = await genrator(query, contexts);
 //   console.log("answer:", answer);
 // }
 // test();
+             

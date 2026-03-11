@@ -1,0 +1,36 @@
+{
+  "name": "rag",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.ts"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.13.15",
+    "@langchain/community": "^1.1.22",
+    "@langchain/core": "^1.1.31",
+    "@langchain/groq": "^1.1.4",
+    "@langchain/pinecone": "^1.0.1",
+    "@pinecone-database/pinecone": "^7.1.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "langchain": "^1.2.30",
+    "pg": "^8.20.0",
+    "pg-hstore": "^2.3.4",
+    "pinecone-client": "^2.0.0",
+    "sequelize": "^6.37.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@sequelize/cli": "^7.0.0-alpha.48",
+    "@types/express": "^5.0.6"
+  }
+}

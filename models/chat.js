@@ -12,8 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Chat.belongsTo(models.User,{
-        foreignKey:"UserId",
+        foreignKey:"userId",
         as:"user"
+      }),
+      Chat.hasMany(models.Message,{
+        foreignKey:"chatId",
+        as:"messages"
       })
     }
   }
@@ -32,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false
     },
-    userId: DataTypes.INTEGER
+    userId: {type:DataTypes.INTEGER,allowNull:false}
   }, {
     sequelize,
     modelName: 'Chat',

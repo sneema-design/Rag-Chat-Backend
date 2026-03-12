@@ -34,3 +34,14 @@ export const getChatbyId=async(req,res)=>{
         });
     }
 }
+export const getChatsByUserId=async(req,res)=>{
+    try {
+        const {id}=req.params;
+        const chats=await fullChatService.getChatsByUserId(id);
+        res.status(200).json(chats);
+    } catch (error) {
+        res.status(error.status||500).json({
+            message: error.message
+        });
+    }
+}

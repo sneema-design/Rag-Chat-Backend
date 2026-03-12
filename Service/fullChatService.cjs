@@ -23,8 +23,18 @@ const getChatbyId = async (id) => {
   }
   return chat;
 };
+const getChatsByUserId=async(id)=>{
+    const chat=await Chat.findAll({where:{
+        userId:id
+    }})
+    if (!chat.length) {
+    throwError("no chat exist", 404);
+  }
+  return chat;
+}
 module.exports = {
   createChat,
   getAllChat,
   getChatbyId,
+  getChatsByUserId
 };

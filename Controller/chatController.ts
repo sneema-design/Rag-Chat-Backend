@@ -5,7 +5,7 @@ export const get_Answer = async (req, res) => {
         const { query } = req.body;
 
         if (!query || query.trim().length === 0) {
-            return res.status(400).json({ message: "Please type the query" });
+             res.status(400).json({ message: "Please type the query" });
         }
 
         const answer = await getAnswer(query);

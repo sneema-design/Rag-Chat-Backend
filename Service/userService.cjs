@@ -1,36 +1,34 @@
-const db =require("../models/index.cjs")
+const db = require("../models/index.cjs");
 
-const {User,Chat}=db
+const { User, Chat } = db;
 
-const createUser=async(data)=>{
-    const user =await User.create(data);
-    return user;
-}
+const createUser = async (data) => {
+  const user = await User.create(data);
+  return user;
+};
 
-const login=async(email,password)=>{
-    const user= await User.findOne({where:{email}});
-    if(!user){
-        throw new Error("user does not exist by this id");
-    }
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-    throw new Error("Invalid Password");
+const login = async (email, password) => {
+  const user = await User.findOne({ where: { email } });
+  if (!user) {
+    throwError("no User exist for this EmailId", 404);
   }
-    return user;
-}
-const getById=async(id)=>{
-   const user =await User.findByPk(id,{
-            include:[
-                {model:Chat,as:"chats"}
-            ]
-        });
-   if(!user){
-    throw new Error ("no user by this id");
-   }
-   return user
-}
-module.exports={
-    createUser,
-    login,
-    getById
-}
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) {
+    throwError("Invalid Password",401);
+  }
+  return user;
+};
+const getById = async (id) => {
+  const user = await User.findByPk(id, {
+    include: [{ model: Chat, as: "chats" }],
+  });
+  if (!user) {
+    throwError("no User exist for this Id", 404);
+  }
+  return user;
+};
+module.exports = {
+  createUser,
+  login,
+  getById,
+};

@@ -6,7 +6,7 @@ export const createMessage = async (req, res) => {
     const message = await MessageService.createMessage(data);
     res.status(200).json(message);
   } catch (error) {
-    res.status(400).json({
+    res.status(error.status||500).json({
       message: error.message,
     });
   }
@@ -18,7 +18,7 @@ export const getMessagesByChatId = async (req, res) => {
     const messages = await MessageService.getMessagesByChatId(id);
     res.status(200).json(messages);
   } catch (error) {
-    res.status(400).json({
+    res.status(error.status||500).json({
       message: error.message,
     });
   }
@@ -30,7 +30,7 @@ export const getMessageByID = async (req, res) => {
     const message = await MessageService.getMessageByID(id);
     res.status(200).json(message);
   } catch (error) {
-    res.status(400).json({
+    res.status(error.status||500).json({
       message: error.message,
     });
   }

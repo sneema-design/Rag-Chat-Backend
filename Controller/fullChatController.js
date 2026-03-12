@@ -6,7 +6,7 @@ export const createChat=async(req,res)=>{
         const chat= await fullChatService.createChat(data);
         res.status(200).json(chat);
     } catch (error) {
-         res.status(400).json({
+         res.status(error.status||500).json({
             message: error.message
         });
     }
@@ -17,7 +17,7 @@ export const getAllChat=async(req,res)=>{
         const chat= await fullChatService.getAllChat();
         res.status(200).json(chat);
     } catch (error) {
-           res.status(400).json({
+           res.status(error.status||500).json({
             message: error.message
         });
     }
@@ -29,7 +29,7 @@ export const getChatbyId=async(req,res)=>{
         const chat= await fullChatService.getChatbyId(id);
         res.status(200).json(chat);
     } catch (error) {
-          res.status(400).json({
+          res.status(error.status||500).json({
             message: error.message
         });
     }

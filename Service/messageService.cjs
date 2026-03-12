@@ -13,20 +13,20 @@ const getMessagesByChatId = async (id) => {
     },
     order: [["id", "ASC"]],
   });
-  if(messages.length===0){
-    throw new Error("no messages in the chat");
+  if (messages.length === 0) {
+    throwError("no message exist for this Chat", 404);
   }
   return messages;
 };
-const getMessageByID=async(id)=>{
-    const message= await Message.findByPk(id);
-    if(!message){
-        throw new Error("no message by this id");
-    }
-    return message
-}
+const getMessageByID = async (id) => {
+  const message = await Message.findByPk(id);
+  if (!message) {
+    throwError("no message exist for this Id", 404);
+  }
+  return message;
+};
 module.exports = {
   createMessage,
   getMessagesByChatId,
-  getMessageByID
+  getMessageByID,
 };

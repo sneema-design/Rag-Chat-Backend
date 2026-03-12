@@ -10,7 +10,7 @@ export const createUser = async (req, res) => {
         const user = await UserService.createUser(data);
         res.status(200).json(user);
     } catch (error) {
-        res.status(400).json({
+        res.status(error.status||500).json({
             message: error.message
         });
     }
@@ -22,7 +22,7 @@ export const login=async(req,res)=>{
         const user= await UserService.login(email,password);
         res.status(200).json(user);
     } catch (error) {
-        res.status(400).json({
+        res.status(error.status||500).json({
             message: error.message
         });
     }
@@ -34,7 +34,7 @@ export const getById=async(req,res)=>{
         const user=await UserService.getById(id);
         res.status(200).json(user);
     } catch (error) {
-        res.status(400).json({
+        res.status(error.status||500).json({
             message: error.message
         });
     }

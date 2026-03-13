@@ -23,7 +23,7 @@ app.use("/chat",fullChatRoutes);
 app.use("/message",messageRoutes)
 app.listen(4000,()=>{    
    console.log("server is running on Port 4000");
-})  
+})   
 // async function main() {
 //   console.log("Loading doc");  
 //   const doc = await loadDocs();   
